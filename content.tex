@@ -2,53 +2,46 @@
 % EDIT THIS FILE ONLY — your resume content lives here.
 % ============================================================
 
-% Optional: set your profile photo filename (place the image in this folder)
-% \renewcommand{\profilephoto}{profile.jpg}
+% Profile photo (place the image in this folder)
+\renewcommand{\profilephoto}{profile.jpg}
 
 \ResumeHeader
-  {Your Name Here}
-  {hey@sheetsresume.com}
-  {(555) 555-5555}
-  {Denver, CO}
-  {Portfolio / GitHub}
-  {https://github.com/yourusername}
-  {https://linkedin.com/in/yourprofile}
+  {Owen Yang}
+  {owenyang2002@outlook.com}
+  {0410 776 128}
+  {Sydney, Australia}
+  {sportshub.net.au}
+  {https://www.sportshub.net.au/landing}
+  {https://linkedin.com/in/owenyang}
 
 % ============================================================
 \section{Work Experience}
 % ============================================================
 
-\begin{WorkEntry}{Aug.\ 2023 -- Present}{Google}{Staff Software Engineer}{Remote}
-  \item Led a cross-functional team of 8 engineers to deliver a new search ranking feature, resulting in a 15\% increase in user engagement.
-  \item Architected and deployed a microservices-based backend system handling 10M+ daily requests with 99.99\% uptime.
-  \item Mentored 3 junior engineers, conducting weekly code reviews and establishing best practices for the team.
-  \item \textbf{Stack:} Go, Kubernetes, gRPC, Spanner, BigQuery
+\begin{WorkEntry}{Jan.\ 2023 -- Present}{Atlassian}{Software Engineer}{Sydney, NSW}
+  \item Build and operate Tenant Context Service (TCS), critical infrastructure invoked on every request across Atlassian's cloud products.
+  \item Engineer highly available, read-optimised distributed systems sustaining above six nines of availability across multi-region AWS deployments.
+  \item Improve sidecar caching and failover architecture serving tens of billions of daily lookups with 99.5\%+ cache hit ratios.
+  \item Design resilient request routing, cache invalidation, and isolation patterns to minimise blast radius during regional outages and fail-slow incidents.
+  \item \textbf{Stack:} Java, AWS (DynamoDB, SQS, SNS, S3), microservices, REST APIs, distributed caching
 \end{WorkEntry}
 
-\begin{WorkEntry}{May 2021 -- Aug.\ 2023}{Microsoft}{Senior Software Engineer}{Redmond, WA}
-  \item Developed core components of Azure's serverless compute platform, improving cold-start latency by 40\%.
-  \item Designed and implemented a distributed caching layer reducing database load by 60\% across 12 regions.
-  \item Collaborated with product managers to define roadmap priorities for the Functions runtime team.
-  \item \textbf{Key Results:} 2 patents filed; promoted from SDE II to Senior SDE in 18 months.
+\begin{WorkEntry}{Nov.\ 2022 -- Present}{SPORTSHUB}{Co-Founder}{Sydney, NSW}
+  \item Co-founded a sports event platform helping clubs and organisers publish sessions, manage registrations, and accept payments in one place.
+  \item Lead product and engineering for end-to-end event workflows---recurring schedules, custom forms, QR ticketing, and Stripe-powered checkout.
+  \item Drive go-to-market and platform positioning as a low-fee, community-first alternative for social sports organisers across Australia.
 \end{WorkEntry}
 
-\begin{WorkEntry}{Jun.\ 2019 -- May 2021}{Stripe}{Software Engineer II}{San Francisco, CA}
-  \item Built payment processing APIs used by 50,000+ merchants, processing \$2B+ in annual transaction volume.
-  \item Implemented fraud detection pipelines using machine learning models, reducing chargeback rates by 25\%.
-  \item \textbf{Stack:} Ruby, Python, PostgreSQL, Redis, Kafka
-\end{WorkEntry}
-
-\begin{WorkEntry}{May 2018 -- Aug.\ 2018}{Amazon}{Software Development Engineer Intern}{Seattle, WA}
-  \item Developed an internal tool for automating deployment pipelines, saving the team 10+ hours per week.
-  \item Received return offer for full-time SDE position upon graduation.
+\begin{WorkEntry}{Apr.\ 2022 -- Oct.\ 2022}{Adobe}{Software Engineer Intern}{Sydney, NSW}
+  \item Supported enterprise customer environments on the Adobe Managed Services team, contributing to reliable hosted platform operations.
+  \item Built internal tooling and automation to streamline deployment, monitoring, and day-to-day operational workflows for managed instances.
 \end{WorkEntry}
 
 % ============================================================
 \section{Education}
 % ============================================================
 
-\begin{EducationEntry}{May 2019}{University of Colorado Boulder}{B.S.\ Computer Science, GPA: 3.8/4.0}{Boulder, CO}
-  \item Dean's List (6 semesters); Undergraduate Research Assistant in Distributed Systems Lab
+\begin{EducationEntry}{2020 -- 2022}{University of Sydney}{B.Com, Finance and Computer Science, WAM: 92}{Sydney, Australia}
 \end{EducationEntry}
 
 % ============================================================
@@ -56,8 +49,8 @@
 % ============================================================
 
 \begin{SkillsList}
-  \SkillLine{Certifications}{AWS Solutions Architect Professional; Google Cloud Professional Cloud Architect; Kubernetes Administrator (CKA)}
-  \SkillLine{Technologies}{Go, Python, Java, TypeScript, Kubernetes, Docker, Terraform, PostgreSQL, Redis, Kafka, gRPC, GraphQL}
-  \SkillLine{Skills}{Distributed Systems, System Design, API Development, CI/CD, Agile/Scrum, Technical Leadership, Mentoring}
-  \SkillLine{Interests}{Open-source contributor (Kubernetes, gRPC); Marathon runner; Amateur chess (USCF 1800+)}
+  \SkillLine{Technologies}{Java, TypeScript, Python, AWS, DynamoDB, Kubernetes, Docker, PostgreSQL, REST APIs, React, Stripe, microservices}
+  \SkillLine{Engineering}{Distributed Systems, High Availability, System Design, Caching, CI/CD, Observability, API Development, Performance Optimisation}
+  \SkillLine{Business}{Product Strategy, Go-to-Market, Financial Modelling, Accounting \& Finance, Startup Operations, Stakeholder Management}
+  \SkillLine{Interests}{Social sports and community building; sports tech and fintech; hiking and exploring Sydney}
 \end{SkillsList}

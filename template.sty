@@ -27,14 +27,14 @@
 \usepackage{titlesec}
 
 % --- Colors ---
-\definecolor{Maroon}{HTML}{7A1F2E}
-\definecolor{SectionLine}{HTML}{8F9A6B}
-\definecolor{PhotoBorder}{HTML}{A8C4D9}
+\definecolor{Accent}{HTML}{1F4E79}
+\definecolor{SectionLine}{HTML}{6B9BB8}
+\definecolor{PhotoBorder}{HTML}{8FB4D4}
 
 \hypersetup{
   colorlinks=true,
-  linkcolor=Maroon,
-  urlcolor=Maroon,
+  linkcolor=Accent,
+  urlcolor=Accent,
   pdfborder={0 0 0}
 }
 
@@ -42,7 +42,7 @@
 \setlength{\parskip}{0pt}
 \setstretch{1.05}
 
-% --- Section headings with olive underline ---
+% --- Section headings with blue underline ---
 \titleformat{\section}
   {\Large\bfseries\sffamily\color{black}}
   {}
@@ -50,26 +50,26 @@
   {}
   [\vspace{2pt}{\color{SectionLine}\titlerule[0.6pt]}\vspace{6pt}]
 
-\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titlespacing*{\section}{0pt}{6pt}{4pt}
 
-% --- Maroon bookmark / ribbon bullet ---
+% --- Blue bookmark / ribbon bullet ---
 \newcommand{\ribbon}{%
-  \textcolor{Maroon}{\small\faIcon{bookmark}}%
+  \textcolor{Accent}{\small\faIcon{bookmark}}%
 }
 
 % --- Profile photo (override in content.tex) ---
 \newcommand{\profilephoto}{profile.jpg}
 
 \newcommand{\contactchip}[2]{%
-  \textcolor{Maroon}{\faIcon{#1}}\;#2%
+  \textcolor{Accent}{\faIcon{#1}}\;#2%
 }
 
 \newcommand{\profileplaceholder}{%
   \begin{tikzpicture}
     \draw[PhotoBorder, line width=0.8pt, fill=PhotoBorder!15]
       (0,0) rectangle (3.1cm,3.1cm);
-    \fill[Maroon!35] (1.55cm,2.05cm) circle (0.48cm);
-    \fill[Maroon!35] (1.55cm,0.72cm) ellipse (0.78cm and 0.58cm);
+    \fill[Accent!35] (1.55cm,2.05cm) circle (0.48cm);
+    \fill[Accent!35] (1.55cm,0.72cm) ellipse (0.78cm and 0.58cm);
   \end{tikzpicture}%
 }
 
@@ -108,7 +108,7 @@
     &
     \vspace{0pt}\renderprofilephoto
   \end{tabular}\par
-  \vspace{10pt}
+  \vspace{0pt}
 }
 
 % --- Timeline layout (minipage, not tabularx) ---
@@ -131,14 +131,15 @@
 
 \newcommand{\roleheader}[3]{%
   \textbf{#1}\\[-0.5ex]
-  \textit{#2}\hfill\textit{#3}\\[2pt]
+  \textit{#2}\hfill\textit{#3}\\[-6pt]
 }
 
 \newenvironment{resumeitems}{%
   \begin{itemize}[
     leftmargin=1.0em,
     itemsep=2pt,
-    topsep=2pt,
+    topsep=0pt,
+    partopsep=0pt,
     parsep=0pt,
     label=\textcolor{black}{\textbullet}
   ]%
@@ -147,24 +148,27 @@
 }
 
 % Work experience: dates | company | title | location
-\newenvironment{WorkEntry}[4]{%
+\NewDocumentEnvironment{WorkEntry}{mmmm +b}{%
   \timelineentry{#1}{%
     \roleheader{#2}{#3}{#4}%
     \begin{resumeitems}%
-}{%
+    #5%
     \end{resumeitems}%
   }%
-}
+  \vspace{6pt}%
+}{}
 
 % Education: date | school | degree | location
-\newenvironment{EducationEntry}[4]{%
+\NewDocumentEnvironment{EducationEntry}{mmmm +b}{%
   \timelineentry{#1}{%
     \roleheader{#2}{#3}{#4}%
-    \begin{resumeitems}%
-}{%
-    \end{resumeitems}%
+    \ifstrempty{#5}{}{%
+      \begin{resumeitems}%
+      #5%
+      \end{resumeitems}%
+    }%
   }%
-}
+}{}
 
 % Certifications, Skills & Interests section
 \newenvironment{SkillsList}{%
@@ -173,7 +177,7 @@
     itemsep=4pt,
     topsep=2pt,
     parsep=0pt,
-    label=\textcolor{Maroon}{\faIcon{bookmark}}
+    label=\textcolor{Accent}{\faIcon{bookmark}}
   ]%
 }{%
   \end{itemize}%
