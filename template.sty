@@ -11,9 +11,21 @@
   right=1.6cm
 ]{geometry}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+\newcommand{\ResumeFontPath}{fonts/}
+\newcommand{\ResumeFontOpts}{%
+  Path=\ResumeFontPath,%
+  Extension=.ttf,%
+  UprightFont=*-Regular,%
+  BoldFont=*-Bold,%
+  ItalicFont=*-Italic,%
+  BoldItalicFont=*-BoldItalic%
+}
+\setmainfont{Satoshi}[\ResumeFontOpts]
+\setsansfont{Satoshi}[\ResumeFontOpts]
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage{microtype}
 \usepackage{setspace}
 \usepackage{array}
@@ -41,6 +53,14 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \setstretch{1.05}
+\pagestyle{empty}
+
+% Keep words whole — no hyphenated line breaks
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\brokenpenalty=10000
+\tolerance=2000
+\emergencystretch=2em
 
 % --- Section headings with blue underline ---
 \titleformat{\section}
@@ -50,7 +70,7 @@
   {}
   [\vspace{2pt}{\color{SectionLine}\titlerule[0.6pt]}\vspace{6pt}]
 
-\titlespacing*{\section}{0pt}{6pt}{4pt}
+\titlespacing*{\section}{0pt}{0pt}{4pt}
 
 % --- Blue bookmark / ribbon bullet ---
 \newcommand{\ribbon}{%
@@ -61,7 +81,11 @@
 \newcommand{\profilephoto}{profile.jpg}
 
 \newcommand{\contactchip}[2]{%
-  \textcolor{Accent}{\faIcon{#1}}\;#2%
+  \mbox{%
+    $\vcenter{\hbox{\textcolor{Accent}{\faIcon{#1}}}}$%
+    \hspace{0.55em}%
+    $\vcenter{\hbox{#2}}$%
+  }%
 }
 
 \newcommand{\profileplaceholder}{%
@@ -104,11 +128,11 @@
     \noindent
     \contactchip{map-marker-alt}{\small #4}%
     \hspace{1.5em}%
-    \contactchip{globe}{\href{#6}{\small #5}}%
+    \contactchip{github}{\href{#6}{\small #5}}%
     &
     \vspace{0pt}\renderprofilephoto
   \end{tabular}\par
-  \vspace{0pt}
+  \vspace{-5pt}
 }
 
 % --- Timeline layout (minipage, not tabularx) ---
@@ -126,12 +150,19 @@
   \begin{minipage}[t]{\dimexpr\textwidth-\datecolwidth-0.75cm\relax}
     #2
   \end{minipage}\par
-  \vspace{6pt}
+  \vspace{10pt}
 }
 
 \newcommand{\roleheader}[3]{%
   \textbf{#1}\\[-0.5ex]
   \textit{#2}\hfill\textit{#3}\\[-6pt]
+}
+
+\newcommand{\workroleheader}[3]{%
+  {\large
+    \textbf{#1}\\[-0.5ex]
+    \textit{#2}\hfill\textit{#3}\\[-6pt]
+  }%
 }
 
 \newenvironment{resumeitems}{%
@@ -150,12 +181,11 @@
 % Work experience: dates | company | title | location
 \NewDocumentEnvironment{WorkEntry}{mmmm +b}{%
   \timelineentry{#1}{%
-    \roleheader{#2}{#3}{#4}%
+    \workroleheader{#2}{#3}{#4}%
     \begin{resumeitems}%
     #5%
     \end{resumeitems}%
   }%
-  \vspace{6pt}%
 }{}
 
 % Education: date | school | degree | location
